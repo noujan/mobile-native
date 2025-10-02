@@ -337,6 +337,15 @@ export default class Activity extends Component<ActivityProps> {
     if (this.props.entity.custom_type === 'audio') {
       return;
     }
+
+    if (
+      this.props.entity.hasImage() &&
+      !this.props.entity.perma_url &&
+      !this.props.entity.isLocked()
+    ) {
+      this.mediaView?.navToGallery();
+      return;
+    }
     this.navToActivity();
   };
 
